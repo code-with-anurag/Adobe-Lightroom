@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lightroom</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="media.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Baskervville+SC&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap" rel="stylesheet">
+
+   
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+<body>
+    <div class="container">
+       
+        <div class="navbar">
+            
+            <div class="navdiv navdiv-1">
+                <img src="data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6bnMxPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiBuczE6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHhtbDpzcGFjZT0icHJlc2VydmUiIHdpZHRoPSIzMiIgaGVpZ2h0PSIzMiIgdmlld0JveD0iMCAwIDMyIDMyIj48ZGVmcz48Y2xpcFBhdGggaWQ9ImNsaXAtbHJfYXBwaWNvbl8zMiI+PHBhdGggZD0iTTAgMGgzMnYzMkgweiIvPjwvY2xpcFBhdGg+PC9kZWZzPjxnIGRhdGEtbmFtZT0iTGF5ZXIgMiIgY2xpcC1wYXRoPSJ1cmwoI2NsaXAtbHJfYXBwaWNvbl8zMikiPjxnIGRhdGEtbmFtZT0iUGhvdG8gU3VyZmFjZSI+PGcgZGF0YS1uYW1lPSJPdXRsaW5lIG5vIHNoYWRvdyI+PHBhdGggZGF0YS1uYW1lPSJQYXRoIDMiIGQ9Ik01LjY2NyAwaDIwLjY2NkE1LjY2NyA1LjY2NyAwIDAxMzIgNS42Njd2MTkuODY2YTUuNjY3IDUuNjY3IDAgMDEtNS42NjcgNS42NjdINS42NjdBNS42NjcgNS42NjcgMCAwMTAgMjUuNTMzVjUuNjY3QTUuNjY3IDUuNjY3IDAgMDE1LjY2NyAweiIgZmlsbD0iIzAwMWUzNiIvPjwvZz48L2c+PGcgZmlsbD0iIzMxYThmZiIgZGF0YS1uYW1lPSJPdXRsaW5lZCBNbmVtb25pY3MgTG9nb3MiPjxwYXRoIGRhdGEtbmFtZT0iUGF0aCAxIiBkPSJNMTYuODA1IDIyLjA1Mkg4LjM0OHEtLjIxNSAwLS4yMTUtLjIzNlY4LjE4NGEuMTcxLjE3MSAwIDAxLjE5My0uMTkzaDIuNjIyYS4xMzMuMTMzIDAgMDEuMTUuMTV2MTEuMjA2aDYuMTYxcS4xOTMgMCAuMTUuMTkzbC0uMzg2IDIuMzE4YS4yLjIgMCAwMS0uMDg2LjE2MS4yODUuMjg1IDAgMDEtLjEzMi4wMzN6Ii8+PHBhdGggZGF0YS1uYW1lPSJQYXRoIDIiIGQ9Ik0xOC45MyAxMS4zODJoMi4zNGEuMjkyLjI5MiAwIDAxLjI3OS4yMTUgMS4wNCAxLjA0IDAgMDEuMTA3LjMgMy40NjcgMy40NjcgMCAwMS4wNjQuNDE5cS4wMjEuMjI1LjAyMS40ODNhNS4wMTQgNS4wMTQgMCAwMTEuNDI3LTEuMTQ4IDQuMDIgNC4wMiAwIDAxMS45ODYtLjQ4My4xNzEuMTcxIDAgMDEuMTkzLjE0NS4xNzMuMTczIDAgMDEwIC4wNDh2Mi42cTAgLjE1MS0uMjE1LjE1YTUuNDIyIDUuNDIyIDAgMDAtMi41MjIuNDUxIDIuMjcgMi4yNyAwIDAwLS43MTkuNDk0djYuOHEwIC4xOTMtLjE3Mi4xOTNoLTIuNmEuMTg5LjE4OSAwIDAxLS4yMTUtLjE2MS4xOTMuMTkzIDAgMDEwLS4wNTR2LTcuMzgycTAtLjQ3Mi0uMDExLTF0LS4wMzItMS4wNDFhNi44MzUgNi44MzUgMCAwMC0uMDg2LS44OC4xMjMuMTIzIDAgMDEuMTUtLjE1eiIvPjwvZz48L2c+PC9zdmc+" alt="" width="7%" >
+                 <p>Adobe Lightroom </p>
+            </div>
+
+            <div class="navdiv navdiv-2">
+                     <ul class="navdiv-ul">
+                        <li><a id="home" href="">Home</a></li>
+                        <li><a href="">Pricing</a></li>
+                        <li><a href="">Community</a></li>
+                        <li><a href="">Learn</a></li>
+                        <li><a href="">Academy</a></li>
+                     </ul>
+            </div>
+
+            <div class="navdiv navdiv-3">
+                      <button id="sign-in-btn">sign in</button>
+                      <button id="lightroom-btn">Try Lightroom now</button>
+            </div>
+        </div>
+        
+        <!-- --------------------------------navbar end------------------------------------------- -->
+
+        <div class="hero-section" style="background-image:url(&quot;https://d3gnp5fs6fu2h7.cloudfront.net/modern/images/hero-sm-2023-27d54a3b1827f548.jpg&quot;);">
+        </div>
+            
+        <div class="text-section">
+
+            <h1>Online photo editing <br>
+                made easy with <br>
+                Lightroom</h1>
+            <p>Edit photos with power and precision <br>
+               directly from your browser.</p>
+            <span class="text-span">
+                 <button id="span-btn-1">Buy now</button> 
+                 <button id="span-btn-2">Try Lightroom now</button>   
+            </span>   
+        </div>
+
+        <div class="rightbox">
+            
+            <div class="box">
+                <div class="first-row">
+                     <h5>Exposure</h5>
+                     <h5>0</h5>
+                </div>
+                <div class="second-row">
+                     <div class="line-1"></div>
+                     <div class="circle"></div>
+                     <div class="line-2"></div>
+                </div>
+           </div>
+
+           <div class="box">
+               <div class="first-row">
+                  <h5>Contrast</h5>
+                  <h5>0</h5>
+               </div>
+               <div class="second-row">
+                  <div class="line-1"></div>
+                  <div class="circle"></div>
+                  <div class="line-2"></div>
+               </div>
+           </div>
+
+           <div class="box">
+              <div class="first-row">
+                  <h5>Highlight</h5>
+                  <h5>0</h5>
+              </div>
+              <div class="second-row">
+                  <div class="line-1"></div>
+                  <div class="circle"></div>
+                  <div class="line-2"></div>
+              </div>
+           </div>
+
+           <div class="box">
+              <div class="first-row">
+                  <h5>Shadows</h5>
+                  <h5>0</h5>
+              </div>
+              <div class="second-row">
+                  <div class="line-1"></div>
+                  <div class="circle"></div>
+                  <div class="line-2"></div>
+              </div>
+           </div>
+
+           <div class="box">
+              <div class="first-row">
+                  <h5>Whites</h5>
+                  <h5>0</h5>
+              </div>
+              <div class="second-row">
+                  <div class="line-1"></div>
+                  <div class="circle"></div>
+                  <div class="line-2"></div>
+              </div>
+           </div>
+
+           <div class="box">
+              <div class="first-row">
+                  <h5>Blacks</h5>
+                  <h5>0</h5>
+            </div>
+              <div class="second-row">
+                  <div class="line-1"></div>
+                  <div class="circle"></div>
+                  <div class="line-2"></div>
+              </div>
+           </div>
+                 
+           <div class="kenneth">
+                  <p>Original by <strong style="color:rgb(50,50,50)">kenneth Hines Jr</strong> </p>
+           </div>
+  </div>
+              
+
+            <div class="try-it">
+                  <p>Try it! <i class="fa-solid fa-turn-down"></i></p>
+            </div>
+
+          <!-- ----------------------------hero-section end----------------------------------   -->
+
+         
+         <section class="section-1">
+             
+            <div class="block-1">
+                 
+                <div class="left-part">
+                    <img src="./icons.png" alt="" width="20%">
+                </div>
+   
+                <div class="right-part">
+                    <h2>Photography <br>
+                        pricing & plans</h2>   
+                    <p>From Lightroom to Photoshop and more, for all of your  creativity, we have what you need to empower your vision  and make it amazing.</p>  
+                    <button id="pricing-btn">View Pricing & Plans</button>      
+                </div>
+   
+            </div>
+         </section> 
+            
+             <!-- -----------------------------section-1 end------------------------------------- -->
+            
+            <section class="section-2 cycle-section">
+             
+                <div class="block-2">
+                     
+                    <div class="left-part-2">
+                        <h2>Say goodbye <br>
+                            to flaws </h2>
+                        <p>Lightroom’s healing tools remove distractions and imperfections so that every photo can be picture-perfect.</p>
+                        <span class=" text-span-1">
+                            <button id="spanbtn-1">Buy now</button> 
+                            <button id="spanbtn-2">Try Lightroom now</button>   
+                       </span>  
+                    </div>
+    
+                    <div class="right-part-2">
+                           <img src="./cycle.jpg" alt="" width="20%">
+                    </div>
+       
+                </div>
+                
+         </section> 
+
+            <!-- -----------------------------section-2 end---------------------------------------- -->
+
+        
+            <section class="section-2 pomogranate-section">
+             
+                <div class="block-2">
+                    
+                    <div class="right-part-2 pomogranate">
+                         <img src="./pomogranate.jpg" alt="" >
+                    </div>
+
+                    <div class="left-part-2">
+                        <h2>Make it pop</h2>
+                        <p>Professional quality edits in a single click with  AI-powered presets designed to elevate the look and feel of  all kinds of photos — from travel to portraits, and more.</p>
+                        <span class=" text-span-1">
+                            <button id="spanbtn-1">Buy now</button> 
+                            <button id="spanbtn-2">Try Lightroom now</button>   
+                        </span>  
+                    </div>
+       
+                </div>
+                
+         </section>  
+
+              
+         <aside class="pomogranate-box" >
+
+            <div class="cinematic">
+               <p>Cinematic-CN16</p>
+            </div>
+
+            <div class="div-1">
+               <img id="first-box" src="./pomogranate.jpg"  alt="" width="24%">
+               <img src="./pomogranate2.jpg" alt="" width="24%">
+               <img src="./pomogranate4.jpg" alt="" width="24%">
+               <img src="./pomogranate3.jpg" alt="" width="24%">
+            </div> 
+
+            <div class="div-1">
+               <img src="./pomogranate4.jpg" alt="" width="24%">
+               <img src="./pomogranate1.jpg" alt="" width="24%">
+               <img src="./pomogranate3.jpg" alt="" width="24%">
+               <img src="./pomogranate2.jpg" alt="" width="24%">
+            </div> 
+
+            <div class="div-1">
+               <img src="./pomogranate3.jpg" alt="" width="24%">
+               <img src="./pomogranate1.jpg" alt="" width="24%">
+               <img src="./pomogranate4.jpg" alt="" width="24%">
+               <img src="./pomogranate2.jpg" alt="" width="24%">
+            </div> 
+            
+            <div class="martagrabowska">
+               <p>Original by <strong style="color:rgb(38,38,38);">Marta Grabowska</strong></p>
+            </div>
+       </aside>
+
+            
+         
+            <!-- -------------------------------------------------------------------------- -->
+
+
+            <section class="section-2 bluesky-section">
+             
+                <div class="block-2">
+                     
+                    <div class="left-part-2">
+                        <h2>Be selective</h2>
+                        <p>With powerful Lightroom masking tools, you can pick and choose which parts of your photo you want to edit.</p>
+                        <span class=" text-span-1">
+                            <button id="spanbtn-1">Buy now</button> 
+                            <button id="spanbtn-2">Try Lightroom now</button>   
+                        </span>  
+                    </div>
+       
+                    <div class="right-part-2">
+                           <img src="./bluesky.jpg" alt="" width="20%">
+                    </div>
+       
+                </div>
+                
+         </section> 
+
+            <!-- ------------------------------------------------------------------------------------ -->
+
+        <section class="section-3">
+            
+              <div class="upperbox">
+                     <h2>Improve your photography skill</h2>
+                     <p>Lightroom offers inspiration and guided learning for everyone to become better  photographers.</p>
+                     <span>
+                        <button id="buy-btn">Buy now</button>
+                        <button id="try-btn">Try Lightroom now</button>
+                     </span>
+              </div>
+
+              <div class="middlebox">
+                      <img src="https://cdn.cp.adobe.io/content/2/dcx/2be6b37d-7645-4b69-bce8-de1a3347c1dc/content/manifest/version/0/component/path/preview-animation/before.jpg/rendition/format/jpg/dimension/width/size/512" alt="">
+                      <img src="https://cdn.cp.adobe.io/content/2/rendition/bade79b7-b134-46a7-bc4d-3bae89367506/version/2/format/jpg/dimension/width/size/512" alt="">
+                      <img src="https://cdn.cp.adobe.io/content/2/rendition/fa112c63-e0b6-4e79-94c7-6f63828cf8de/version/0/format/jpg/dimension/width/size/512" alt="">
+                      <img src="https://cdn.cp.adobe.io/content/2/rendition/96e29f63-4270-47f9-831c-481d1ee9cc13/version/2/format/jpg/dimension/width/size/512" alt="">
+              </div>
+
+             <div class="lowerbox">
+                     <p>There have been <strong id="number" style="color:rgb(45, 211, 45)" >1,000,000+</strong> photos posted to the Community so far!</p>
+                     <button id="community-btn">Explore community posts</button>
+              </div>
+
+
+        </section>
+
+           <!-- -----------------------------------section-3 end----------------------------------- -->
+          
+         <section class="section-4">
+           <div class="items">
+                
+            <div class="cards card1">
+                  <div class="upperpart">
+                          <img src="./FoodCookingWithColorBeaLubas.jpg" alt="" >
+                  </div>
+                  <div class="lowerpart">
+                           <p class="para-1">FOOD</p>
+                           <p class="para-2">Cooking with Color</p>
+                           <p class="para-3">Food photographers orchestrate images around classic color harmonies and contemporary palettes.</p>
+                  </div>
+            </div>
+
+            <div class="cards card2">
+                   <div class="upperpart">
+                           <img src="./EssentialsOrganizeRateFind.jpg" alt="">
+                   </div>
+                   <div class="lowerpart">
+                            <p class="para-1">LIGHTROOM ESSENTIALS</p>
+                            <p class="para-2">Organize,Rate,& Find Images</p>
+                            <p class="para-3">Manage your photos like a pro with Lightroom's powerful organization and curation workflows.</p>
+                   </div>
+            </div>
+
+            <div class="cards card3">
+                <div class="upperpart">
+                    <img src="./FoodMotionAndLevitationKristinaKasting.jpg" alt="">
+            </div>
+            <div class="lowerpart">
+                     <p class="para-1">FOOD</p>
+                     <p class="para-2">Motion & Levitation</p>
+                     <p class="para-3">Become a food photographer wizard who defies gravity by magically frezing and splashing sprinkles in midair!</p>
+            </div>
+            </div>
+
+            <div class="cards card4">
+                <div class="upperpart">
+                    <img src="./EssentialsEditingFoundations.jpg" alt="">
+            </div>
+            <div class="lowerpart">
+                     <p class="para-1">LIGHTROOM ESSENTIALS</p>
+                     <p class="para-2">Editing Foundations</p>
+                     <p class="para-3">Transform your photos instantly with the power of Lightroom's Auto settings,profiles,& presets.</p>
+            </div>
+            </div>
+
+            <div class="cards card5">
+                <div class="upperpart upperpart-5">
+                    <h1>Lightroom <br>
+                        Academy</h1>
+            </div>
+            <div class="lowerpart lowerpart-5">
+                    <p>Elevate your photography and Lightroom skills with inspiration,inspiration,interactive exercises,and expert information.</p>
+                    <button>View all articles</button> 
+            </div>
+            </div>
+
+            <div class="cards card6">
+                <div class="upperpart">
+                    <img src="./TravelEtiquetteKatrinEismann.jpg" alt="">
+            </div>
+            <div class="lowerpart">
+                     <p class="para-1">TRAVEL</p>
+                     <p class="para-2">Travel Photography Etiquette</p>
+                     <p class="para-3">Being a considerate and respectful visitor will help make you a welcomed guest. Appreciate local culture and traditions.</p>
+            </div>
+            </div>
+
+            <div class="cards card7">
+                <div class="upperpart">
+                     <img src="./VisualLayersNickRains.jpg" alt="">
+                </div>
+            <div class="lowerpart">
+                     <p class="para-1">NIGHT</p>
+                     <p class="para-2">Plan,Prepare & Practice</p>
+                     <p class="para-3">Being prepared and planning ahead leads to success in the field and stunning night photography images.</p>
+            </div>
+            </div>
+
+            <div class="cards card8">
+                <div class="upperpart">
+                    <img src="./BWSeeingInBlackandWhite.jpg" alt="">
+            </div>
+            <div class="lowerpart">
+                     <p class="para-1">BLACK & WHITE</p>
+                     <p class="para-2">Seeing in Black & White</p>
+                     <p class="para-3">Learn the essential building blocks of black & white photography and begin training your eye with a few simple daily activities.</p>
+            </div>
+
+            </div>
+            <div class="cards card9">
+                <div class="upperpart">
+                    <img src="./FlipTheFrameSusanPortnoy.jpg" alt="">
+            </div>
+
+            <div class="lowerpart">
+                     <p class="para-1">COMPOSITION</p>
+                     <p class="para-2">Flip the Frame</p>
+                     <p class="para-3">Explore how camera orientation,whether vertical or horizontal, is the better and more exciting way to fit the subject into the frame.</p>
+            </div>
+            </div>
+            
+           </div>
+          
+        </section>
+
+
+
+        <!-- ------------------------section-4 end---------------------------- -->
+         
+         <section class="section-5">
+             
+            <div class="last-section">
+                 
+                <div class="left-side">
+                     <img src="./complete-background-0e1338f8ebee4981.jpg" alt="" >
+                </div>
+
+                <div class="right-side">
+                      <h2>Edit from <br>
+                          anywhere</h2>
+                      <p>Pick up where you left off with Lightroom on mobile, desktop, or web your projects will sync automatically.</p>
+
+                      <div class="img-div">
+                        <img src="https://d3gnp5fs6fu2h7.cloudfront.net/modern/images/download-78329c5610563f83.svg" alt="" id="app-store" width="30%">
+                        <img src="./get-6c574de6ea083a2d.png" alt="" width="35%">
+                       </div>
+
+                     <div class="lightroom-div">
+                        <div class="lightroom-btn">
+                            <span>
+                                <img src="data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6bnMxPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiBuczE6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHhtbDpzcGFjZT0icHJlc2VydmUiIHdpZHRoPSIzMiIgaGVpZ2h0PSIzMiIgdmlld0JveD0iMCAwIDMyIDMyIj48ZGVmcz48Y2xpcFBhdGggaWQ9ImNsaXAtbHJfYXBwaWNvbl8zMiI+PHBhdGggZD0iTTAgMGgzMnYzMkgweiIvPjwvY2xpcFBhdGg+PC9kZWZzPjxnIGRhdGEtbmFtZT0iTGF5ZXIgMiIgY2xpcC1wYXRoPSJ1cmwoI2NsaXAtbHJfYXBwaWNvbl8zMikiPjxnIGRhdGEtbmFtZT0iUGhvdG8gU3VyZmFjZSI+PGcgZGF0YS1uYW1lPSJPdXRsaW5lIG5vIHNoYWRvdyI+PHBhdGggZGF0YS1uYW1lPSJQYXRoIDMiIGQ9Ik01LjY2NyAwaDIwLjY2NkE1LjY2NyA1LjY2NyAwIDAxMzIgNS42Njd2MTkuODY2YTUuNjY3IDUuNjY3IDAgMDEtNS42NjcgNS42NjdINS42NjdBNS42NjcgNS42NjcgMCAwMTAgMjUuNTMzVjUuNjY3QTUuNjY3IDUuNjY3IDAgMDE1LjY2NyAweiIgZmlsbD0iIzAwMWUzNiIvPjwvZz48L2c+PGcgZmlsbD0iIzMxYThmZiIgZGF0YS1uYW1lPSJPdXRsaW5lZCBNbmVtb25pY3MgTG9nb3MiPjxwYXRoIGRhdGEtbmFtZT0iUGF0aCAxIiBkPSJNMTYuODA1IDIyLjA1Mkg4LjM0OHEtLjIxNSAwLS4yMTUtLjIzNlY4LjE4NGEuMTcxLjE3MSAwIDAxLjE5My0uMTkzaDIuNjIyYS4xMzMuMTMzIDAgMDEuMTUuMTV2MTEuMjA2aDYuMTYxcS4xOTMgMCAuMTUuMTkzbC0uMzg2IDIuMzE4YS4yLjIgMCAwMS0uMDg2LjE2MS4yODUuMjg1IDAgMDEtLjEzMi4wMzN6Ii8+PHBhdGggZGF0YS1uYW1lPSJQYXRoIDIiIGQ9Ik0xOC45MyAxMS4zODJoMi4zNGEuMjkyLjI5MiAwIDAxLjI3OS4yMTUgMS4wNCAxLjA0IDAgMDEuMTA3LjMgMy40NjcgMy40NjcgMCAwMS4wNjQuNDE5cS4wMjEuMjI1LjAyMS40ODNhNS4wMTQgNS4wMTQgMCAwMTEuNDI3LTEuMTQ4IDQuMDIgNC4wMiAwIDAxMS45ODYtLjQ4My4xNzEuMTcxIDAgMDEuMTkzLjE0NS4xNzMuMTczIDAgMDEwIC4wNDh2Mi42cTAgLjE1MS0uMjE1LjE1YTUuNDIyIDUuNDIyIDAgMDAtMi41MjIuNDUxIDIuMjcgMi4yNyAwIDAwLS43MTkuNDk0djYuOHEwIC4xOTMtLjE3Mi4xOTNoLTIuNmEuMTg5LjE4OSAwIDAxLS4yMTUtLjE2MS4xOTMuMTkzIDAgMDEwLS4wNTR2LTcuMzgycTAtLjQ3Mi0uMDExLTF0LS4wMzItMS4wNDFhNi44MzUgNi44MzUgMCAwMC0uMDg2LS44OC4xMjMuMTIzIDAgMDEuMTUtLjE1eiIvPjwvZz48L2c+PC9zdmc+" alt="" width="85%">
+                            </span>
+                            <span>
+                                <h6>Download</h6>
+                                <h5>Lightroom</h5>
+                            </span>
+                       </div>
+                     </div>
+                      
+                </div>
+            </div>
+             
+          </section>
+
+
+        <!-- ------------------------section-5 end-------------------------------- -->
+
+
+           <footer class="footer-section">
+                
+                <div class="footer-div1">
+                      <span class="footer-span1">
+                          <p>Follow Lightroom on:</p>
+                      </span>
+                      <span class="footer-span2">
+                        <i class="fa-brands fa-square-facebook"></i>
+                        <i class="fa-brands fa-instagram"></i>
+                        <i class="fa-brands fa-twitter"></i>
+                      </span>
+                </div>
+
+                <div class="footer-div2">
+                      <ul>
+                         <li><a href=""></a>&copy 2024 Adobe.All rights reserved</li>
+                         <li><a href=""></a>Terms of Use</li>
+                         <li><a href=""></a>Privacy Policy</li>
+                         <li><a href=""></a>Cookie Preferences</li>
+                         <li><a href=""></a>Do not sell or share my personal information</li>
+                         <li><a href=""></a>Ad Choices</li>
+                         <li><a href=""></a>English,US</li>
+                      </ul>
+                </div>
+
+           </footer>
+
+
+    
+
+        </div>
+             
+           
+                  
+           
+
+           </div>
+             
+        </div>
+
+         
+        
+
+
+
+    </div>
+  
+</body>
+</html>

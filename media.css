@@ -1,0 +1,81 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+@media(max-width:1300px){
+    .text-section{
+        position:absolute;
+        top:53%;
+    }
+    .hero-section{
+        height:700px;
+    }
+    .try-it{
+        display:none;
+    }
+    #sign-in-btn{
+        width:30%;
+    }
+    #lightroom-btn{
+        width:40%;
+    }
+    #span-btn-1{
+        width:25%;
+    }
+    #span-btn-2{
+        width:30%;
+    }
+    .rightbox{
+        width:20%;
+    }
+    #pricing-btn{
+        width:35%;
+        height:45px;
+    }
+    #spanbtn-1{
+        height:45px;
+        width:35%;
+    }
+    #spanbtn-2{
+        height:45px;
+        width:45%;
+    }
+    .left-part-2{
+        width:40%;
+    }
+    
+    .pomogranate-box{
+       position:absolute;
+       top:360%;  
+       left:8%;
+    } 
+    .upperbox span{
+        padding-block:20px;
+    }
+    #buy-btn{
+        height:45px;
+        width:12%;
+    }
+    #try-btn{
+        height:45px;
+        width:15%;
+    }
+    #community-btn{
+        height:45px;
+        width:18%;
+    }
+}
+
+@media(max-width:1200px){
+    .hero-section{
+        height:700px;
+    }
+    .text-section{
+        top:50%;
+    }
+    .pomogranate-box{
+        position:absolute;
+        top:340%;
+    }
+}
